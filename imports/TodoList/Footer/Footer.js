@@ -6,10 +6,10 @@ Footer({
   },
   render() {
     <footer class="footer">
-      <span class="todo-count"><strong b="text: pendingCount" /> {this.pendingWord()} left</span>
+      <span class="todo-count"><strong b="text: pendingCount" /> <span b="text: pendingWord" /> left</span>
       <ul class="filters">
         <li>
-          <a b="click: filter('ALL'), class: { selected: filter === 'ALL' } " href="#">All</a>
+          <a b="click: filter('ALL'), class: { selected: filter === 'ALL' }" href="#">All</a>
         </li>
         <li>
           <a b="click: filter('PENDING'), class: { selected: filter === 'PENDING' }" href="#">Active</a>

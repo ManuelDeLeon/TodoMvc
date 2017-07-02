@@ -1,6 +1,5 @@
 // ./Shared/Shared.js
 import ViewModel from 'viewmodel-react';
-
 let id = 0;
 ViewModel.share({
   todoList: {
@@ -17,8 +16,8 @@ ViewModel.share({
       }
     },
     items() {
-      // Can't just return the sort without slicing it
-      // this is called when rendering and it's the equivalent
+      // Can't just return the sort without slicing it.
+      // This is called when rendering and it's the equivalent
       // of changing an array while looping through it.
       // React *really* hates it.
       return this.filteredItems().slice().sort((a, b) => a.id - b.id);

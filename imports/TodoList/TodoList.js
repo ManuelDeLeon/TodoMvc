@@ -1,6 +1,7 @@
 // ./TodoList/TodoList.js
 TodoList({
   share: 'todoList',
+
   render() {
     <section class="todoapp">
       <Header />

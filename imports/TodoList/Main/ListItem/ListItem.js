@@ -1,6 +1,9 @@
 // ./TodoList/Main/ListItem/ListItem.js
 ListItem({
   share: 'todoList',
+  id: '',
+  text: '',
+  completed: false,
   editing: false,
   editText: '',
   created() {
@@ -28,7 +31,7 @@ ListItem({
         <label b="text: text, click: editing(true)" />
         <button b="click: deleteItem(id)" type="button" class="destroy" />
       </div>
-      <input class="edit" b="value: editText, enter: save, esc: cancel, blur: editing && save, focus: editing" />
+      <input class="edit" b="value: editText, enter: save, esc: cancel, blur: editing && save, focus: editing" type="text" />
     </li>
   }
 })
