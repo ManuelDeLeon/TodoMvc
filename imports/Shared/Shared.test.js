@@ -114,4 +114,81 @@ describe('todoList shared bucket', () => {
     });
   });
 
+  describe('addItem', () => {
+    it('adds item to collection', () => {
+      expect(vm.addItem('A')).toBeTruthy();
+      expect(vm.allItems().length).toBe(1);
+      expect(vm.allItems()[0].text).toBe('A');
+      expect(vm.allItems()[0].completed).toBe(false);
+    });
+  });
+
+  describe('updateItem', () => {
+    it('updates item in collection', () => {
+      const item1 = vm.addItem('A');
+      const item2 = vm.addItem('B');
+      item1.text = "AA";
+      item1.completed = true;
+      vm.updateItem(item1);
+      const item1InCol = vm.allItems().find(i => i.id === item1.id);
+      const item2InCol = vm.allItems().find(i => i.id === item2.id);
+      expect(item1).toEqual(item1InCol);
+      expect(item2).toEqual(item2InCol);
+      expect(vm.allItems().length).toBe(2);
+    });
+  });
+
+  describe('deleteItem', () => {
+    it('deletes item in collection', () => {
+      const item1 = vm.addItem('A');
+      const item2 = vm.addItem('B');
+      vm.deleteItem(item1.id);
+      const item1InCol = vm.allItems().find(i => i.id === item1.id);
+      const item2InCol = vm.allItems().find(i => i.id === item2.id);
+      expect(item1InCol).toBeFalsy();
+      expect(item2).toEqual(item2InCol);
+      expect(vm.allItems().length).toBe(1);
+    });
+  });
+
+  describe('toggleItems', () => {
+    it('sets all to true if has pending items', () => {
+      vm.allItems([
+        { completed: true },
+        { completed: false },
+        { completed: true }
+      ]);
+      vm.toggleItems();
+      expect(vm.allItems()[0].completed).toBe(true);
+      expect(vm.allItems()[1].completed).toBe(true);
+      expect(vm.allItems()[2].completed).toBe(true);
+    });
+    it('sets all to false if all items are completed', () => {
+      vm.allItems([
+        { completed: true },
+        { completed: true },
+        { completed: true }
+      ]);
+      vm.toggleItems();
+      expect(vm.allItems()[0].completed).toBe(false);
+      expect(vm.allItems()[1].completed).toBe(false);
+      expect(vm.allItems()[2].completed).toBe(false);
+    });
+  });
+
+  describe('deleteCompleted', () => {
+    it('deletes completed items', () => {
+      vm.allItems([
+        { id: 1, completed: true },
+        { id: 2, completed: false },
+        { id: 3, completed: true }
+      ]);
+      vm.deleteCompleted();
+      expect(vm.allItems().length).toBe(1);
+      expect(vm.allItems()[0].id).toBe(2);
+      expect(vm.allItems()[0].completed).toBe(false);
+    });
+    
+  });
+
 });

@@ -38,7 +38,7 @@ ViewModel.share({
       if (!itemText) return;
       const item = { id: id++, text: itemText, completed: false };
       this.allItems().push(item);
-      return true;
+      return item;
     },
     updateItem({ id, text, completed }) {
       const index = this.allItems().findIndex(i => i.id === id);
