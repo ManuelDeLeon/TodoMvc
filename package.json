@@ -16,6 +16,7 @@
     "jest-cli": "^20.0.4",
     "meteor-azure": "^2.0.5",
     "meteor-node-stubs": "~0.2.11",
+    "protractor": "^5.1.2",
     "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.6.1",
