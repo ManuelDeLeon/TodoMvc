@@ -1,3 +1,4 @@
+// ./Shared/Shared.test.js
 import './Shared';
 import ViewModel from 'viewmodel-react';
 
@@ -12,6 +13,7 @@ describe('todoList shared bucket', () => {
 
   describe('allItems', () => {
     it('defaults to empty', () => {
+      expect(vm.allItems() instanceof Array).toBe(true);
       expect(vm.allItems().length).toBe(0);
     });
   });
@@ -115,11 +117,17 @@ describe('todoList shared bucket', () => {
   });
 
   describe('addItem', () => {
+    it('does not add empty item', () => {
+      expect(vm.addItem('')).toBeFalsy();
+      expect(vm.allItems().length).toBe(0);
+    });
     it('adds item to collection', () => {
-      expect(vm.addItem('A')).toBeTruthy();
+      const item = vm.addItem('A');
+      expect(item).toBeTruthy();
       expect(vm.allItems().length).toBe(1);
-      expect(vm.allItems()[0].text).toBe('A');
-      expect(vm.allItems()[0].completed).toBe(false);
+      expect('id' in item).toBe(true);
+      expect(item.text).toBe('A');
+      expect(item.completed).toBe(false);
     });
   });
 

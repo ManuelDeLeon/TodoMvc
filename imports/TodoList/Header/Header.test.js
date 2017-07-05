@@ -1,3 +1,4 @@
+// ./TodoList/Header/Header.test.js
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header } from './Header';
@@ -24,12 +25,9 @@ describe('Header', () => {
 
   describe('bindings', () => {
     const rendered = shallow(<Header />);
-
     it('binds input', () => {
       const elements = rendered.find('input[data-bind="value: newItem, enter: addItem(newItem) && newItem.reset"]');
       expect(elements.length).toBe(1);
     });
-    
   })
-
 });
