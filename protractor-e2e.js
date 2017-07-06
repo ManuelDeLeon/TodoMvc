@@ -1,3 +1,4 @@
+require('babel-core/register');
 exports.config = {
 
   allScriptsTimeout: 99999,
@@ -16,7 +17,7 @@ exports.config = {
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
-  specs: ['imports/e2e/*.js'],
+  specs: ['tests/*.e2e.js'],
 
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {

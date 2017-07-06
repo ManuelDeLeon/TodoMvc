@@ -4,7 +4,10 @@
   "scripts": {
     "start": "meteor run",
     "test": "jest --watch",
-    "deploy": "meteor-azure --debug --settings settings.json"
+    "deploy": "meteor-azure --debug --settings settings.json",
+    "selenium": "node node_modules/protractor/bin/webdriver-manager start",
+    "protractor": "node node_modules/protractor/bin/protractor protractor-e2e.js",
+    "e2e": "start npm run start && start npm run selenium && start npm run protractor"
   },
   "dependencies": {
     "babel-jest": "^20.0.3",
