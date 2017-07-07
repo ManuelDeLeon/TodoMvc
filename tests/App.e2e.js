@@ -34,6 +34,27 @@ describe('angularjs homepage', function () {
     expect(mainPage.newItem.getText()).toEqual("");
   })
 
+  it('can edit item', () => {
+    mainPage.newItem.sendKeys("AAA", protractor.Key.ENTER);
+    const item = mainPage.items.get(0);
+    expect(item.row.getAttribute('class')).not.toContain("editing");
+    item.label.click();
+    expect(item.row.getAttribute('class')).toContain("editing");
+    expect(item.textbox.getAttribute('value')).toBe("AAA");
+    item.textbox.sendKeys("BBB", protractor.Key.ESCAPE);
+    expect(item.label.getText()).toBe("AAA");
+    expect(item.row.getAttribute('class')).not.toContain("editing");
+    item.label.click();
+    expect(item.row.getAttribute('class')).toContain("editing");
+    expect(item.textbox.getAttribute('value')).toBe("AAA");
+    item.textbox.sendKeys("BBB", protractor.Key.ENTER);
+    expect(item.label.getText()).toBe("AAABBB");
+    expect(item.row.getAttribute('class')).not.toContain("editing");
+    item.label.click();
+    expect(item.row.getAttribute('class')).toContain("editing");
+    expect(item.textbox.getAttribute('value')).toBe("AAABBB");
+  })
+
   it(`can select All/Active/Completed`, ()=>{
     mainPage.newItem.sendKeys("AAA", protractor.Key.ENTER);
     expect(mainPage.filterAll.getAttribute('class')).toContain("selected");

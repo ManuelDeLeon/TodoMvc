@@ -15,6 +15,7 @@ export default () => {
     itemsCheckboxes: element.all(by.css('ul.todo-list li .view input[type=checkbox]')),
     itemsLabels: element.all(by.css('ul.todo-list li .view label')),
     itemsButtons: element.all(by.css('ul.todo-list li .view button.destroy')),
+    itemsTextboxes: element.all(by.css('ul.todo-list li input[type=text]')),
     items: {
       count() {
         return element.all(by.css('ul.todo-list li')).count();
@@ -24,7 +25,8 @@ export default () => {
         const checkbox = mainPage.itemsCheckboxes.get(index);
         const label = mainPage.itemsLabels.get(index);
         const button = mainPage.itemsButtons.get(index);
-        return { row, checkbox, label, button };
+        const textbox = mainPage.itemsTextboxes.get(index);
+        return { row, checkbox, label, button, textbox };
       }
     }
   }

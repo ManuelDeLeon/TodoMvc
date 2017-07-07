@@ -8,7 +8,7 @@
     "selenium-setup": "node node_modules/protractor/bin/webdriver-manager update",
     "selenium": "node node_modules/protractor/bin/webdriver-manager start",
     "protractor": "node node_modules/protractor/bin/protractor protractor-e2e.js",
-    "e2e": "start npm run start && start npm run selenium && start npm run protractor"
+    "e2e": "start npm run start && start npm run selenium && timeout 60 && start npm run protractor"
   },
   "dependencies": {
     "babel-jest": "^20.0.3",
