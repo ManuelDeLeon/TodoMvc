@@ -5,6 +5,7 @@
     "start": "meteor run",
     "test": "jest --watch",
     "deploy": "meteor-azure --debug --settings settings.json",
+    "selenium-setup": "node node_modules/protractor/bin/webdriver-manager update",
     "selenium": "node node_modules/protractor/bin/webdriver-manager start",
     "protractor": "node node_modules/protractor/bin/protractor protractor-e2e.js",
     "e2e": "start npm run start && start npm run selenium && start npm run protractor"
