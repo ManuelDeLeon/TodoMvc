@@ -1,15 +1,19 @@
-// ./Shared/Shared.js
 import ViewModel from 'viewmodel-react';
+import { Filter } from '../Enumerations';
+
 let id = 0;
 ViewModel.share({
   todoList: {
     allItems: [],
-    filter: 'ALL',
+    filter: ViewModel.property
+      .default(Filter.All)
+      .beforeUpdate(key => Filter[key])
+      ,
     filteredItems() {
       switch (this.filter()) {
-        case 'COMPLETED' :
+        case Filter.Completed :
           return this.allItems().filter(i => i.completed);
-        case 'PENDING':
+        case Filter.Pending:
           return this.allItems().filter(i => !i.completed);
         default:
           return this.allItems();
@@ -56,8 +60,8 @@ ViewModel.share({
     toggleItems() {
       const next = this.hasPending();
       this.allItems().map(i => i.completed = next);
-      // map doesn't change the array 
-      // so we have to trigger the changed event manually
+      // map doesn't change the array so we have to trigger the changed event manually.
+      // We can get the same effect by updating allItems with a mapped array
       this.allItems.changed(); 
     },
     deleteCompleted() {

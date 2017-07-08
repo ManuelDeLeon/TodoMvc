@@ -1,6 +1,6 @@
-// ./Shared/Shared.test.js
 import './Shared';
 import ViewModel from 'viewmodel-react';
+import { Filter } from '../Enumerations';
 
 describe('todoList shared bucket', () => {
 
@@ -19,8 +19,14 @@ describe('todoList shared bucket', () => {
   });
 
   describe('filter', () => {
-    it('defaults to ALL', () => {
-      expect(vm.filter()).toBe('ALL');
+    it('defaults to All', () => {
+      expect(vm.filter()).toBe(Filter.All);
+    });
+    it('accepts valid filter', () => {
+      expect(() => vm.filter(Filter.Completed)).not.toThrow();
+    });
+    it('throws error with bad filter', () => {
+      expect(() => vm.filter("Bad")).toThrow();
     });
   });
 
@@ -35,12 +41,12 @@ describe('todoList shared bucket', () => {
     it('returns all items by default', () => {
       expect(vm.filteredItems().length).toBe(3);
     });
-    it('returns 1 item for COMPLETED', () => {
-      vm.filter("COMPLETED");
+    it('returns 1 item for Completed', () => {
+      vm.filter(Filter.Completed);
       expect(vm.filteredItems().length).toBe(1);
     });
-    it('returns 2 items for PENDING', () => {
-      vm.filter("PENDING");
+    it('returns 2 items for Pending', () => {
+      vm.filter(Filter.Pending);
       expect(vm.filteredItems().length).toBe(2);
     });
   });
@@ -59,14 +65,14 @@ describe('todoList shared bucket', () => {
       expect(vm.items()[1].id).toBe(2);
       expect(vm.items()[2].id).toBe(3);
     });
-    it('returns 2 items sorted for COMPLETED', () => {
-      vm.filter("COMPLETED");
+    it('returns 2 items sorted for Completed', () => {
+      vm.filter(Filter.Completed);
       expect(vm.items().length).toBe(2);
       expect(vm.items()[0].id).toBe(1);
       expect(vm.items()[1].id).toBe(3);
     });
-    it('returns 1 item for PENDING', () => {
-      vm.filter("PENDING");
+    it('returns 1 item for Pending', () => {
+      vm.filter(Filter.Pending);
       expect(vm.items().length).toBe(1);
       expect(vm.items()[0].id).toBe(2);
     });

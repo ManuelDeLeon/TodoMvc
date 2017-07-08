@@ -1,4 +1,3 @@
-// ./TodoList/Header/Header.js
 Header({
   share: 'todoList',
   newItem: '',

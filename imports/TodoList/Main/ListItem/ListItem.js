@@ -1,4 +1,3 @@
-// ./TodoList/Main/ListItem/ListItem.js
 ListItem({
   share: 'todoList',
   id: '',

@@ -1,4 +1,3 @@
-// ./App.js
 import './Shared/Shared.js';
 
 App({

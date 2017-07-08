@@ -1,4 +1,3 @@
-// ./TodoList/Main/Main.js
 Main({
   share: 'todoList',
   render() {

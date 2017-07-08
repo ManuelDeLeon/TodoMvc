@@ -42,16 +42,16 @@ describe('Footer', () => {
       const elements = rendered.find('span[data-bind="text: pendingWord"]');
       expect(elements.length).toBe(1);
     });
-    it('binds option ALL', () => {
-      const elements = rendered.find(`a[data-bind="click: filter('ALL'), class: { selected: filter === 'ALL' }"]`);
+    it('binds option All', () => {
+      const elements = rendered.find(`a[data-bind="click: filter('All'), class: { selected: filter === 'All' }"]`);
       expect(elements.length).toBe(1);
     });
-    it('binds option PENDING', () => {
-      const elements = rendered.find(`a[data-bind="click: filter('PENDING'), class: { selected: filter === 'PENDING' }"]`);
+    it('binds option Pending', () => {
+      const elements = rendered.find(`a[data-bind="click: filter('Pending'), class: { selected: filter === 'Pending' }"]`);
       expect(elements.length).toBe(1);
     });
-    it('binds option COMPLETED', () => {
-      const elements = rendered.find(`a[data-bind="click: filter('COMPLETED'), class: { selected: filter === 'COMPLETED' }"]`);
+    it('binds option Completed', () => {
+      const elements = rendered.find(`a[data-bind="click: filter('Completed'), class: { selected: filter === 'Completed' }"]`);
       expect(elements.length).toBe(1);
     });
     it('binds button', () => {

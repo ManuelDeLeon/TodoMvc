@@ -1,4 +1,3 @@
-// ./TodoList/TodoList.js
 TodoList({
   share: 'todoList',
 

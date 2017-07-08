@@ -1,4 +1,3 @@
-// ./Footer/Footer.js
 Footer({
   render() {
     <footer class="info">
