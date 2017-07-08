@@ -4,12 +4,13 @@
   "scripts": {
     "start": "meteor run",
     "test": "jest --watch",
-    "coverage": "jest --coverage",
+    "test-single": "jest",
+    "coverage": "jest --coverage || http-server -c-1 -o -p 9875 tests/coverage/lcov-report",
     "deploy": "meteor-azure --debug --settings settings.json",
     "selenium-setup": "node node_modules/protractor/bin/webdriver-manager update",
     "selenium": "node node_modules/protractor/bin/webdriver-manager start",
     "protractor": "node node_modules/protractor/bin/protractor protractor-e2e.js",
-    "e2e": "start npm run start && start npm run selenium && timeout 60 && start npm run protractor"
+    "e2e": "start npm run start && start npm run selenium && timeout 90 && start npm run protractor"
   },
   "dependencies": {
     "babel-jest": "^20.0.3",
@@ -18,6 +19,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "enzyme": "^2.9.1",
+    "http-server": "^0.10.0",
     "jest-cli": "^20.0.4",
     "meteor-azure": "^2.0.5",
     "meteor-node-stubs": "~0.2.11",
@@ -28,5 +30,8 @@
     "react-test-renderer": "^15.6.1",
     "viewmodel-react": "^2.1.2",
     "viewmodel-react-plugin": "^3.0.4"
+  },
+  "jest": {
+    "coverageDirectory": "tests/coverage"
   }
 }
