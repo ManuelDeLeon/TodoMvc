@@ -4,6 +4,7 @@
   "scripts": {
     "start": "meteor run",
     "test": "jest --watch",
+    "coverage": "jest --coverage",
     "deploy": "meteor-azure --debug --settings settings.json",
     "selenium-setup": "node node_modules/protractor/bin/webdriver-manager update",
     "selenium": "node node_modules/protractor/bin/webdriver-manager start",

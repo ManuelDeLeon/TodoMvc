@@ -5,7 +5,7 @@ function check(prop, propType, collection) {
     collection[prop] = 1;
   }
 }
-function Enum(...args) {
+export function Enum(...args) {
   const names = {};
   const values = {};
   const enumObj = args.reduce((prev, curr) => {
