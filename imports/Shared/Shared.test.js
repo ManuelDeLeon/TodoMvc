@@ -150,6 +150,18 @@ describe('todoList shared bucket', () => {
       expect(item2).toEqual(item2InCol);
       expect(vm.allItems().length).toBe(2);
     });
+    it(`doesn't do anything with invalid id`, () => {
+      const item = vm.addItem('A');
+      const itemBad = { 
+        id: item.id + 1,
+        text: "AA",
+        completed: true
+      }
+      vm.updateItem(itemBad);
+      const itemInCol = vm.allItems().find(i => i.id === item.id);
+      expect(item).toEqual(itemInCol);
+      expect(vm.allItems().length).toBe(1);
+    });
   });
 
   describe('deleteItem', () => {
@@ -161,6 +173,13 @@ describe('todoList shared bucket', () => {
       const item2InCol = vm.allItems().find(i => i.id === item2.id);
       expect(item1InCol).toBeFalsy();
       expect(item2).toEqual(item2InCol);
+      expect(vm.allItems().length).toBe(1);
+    });
+    it(`doesn't do anything with invalid id`, () => {
+      const item = vm.addItem('A');
+      vm.deleteItem(item.id + 1);
+      const itemInCol = vm.allItems().find(i => i.id === item.id);
+      expect(item).toEqual(itemInCol);
       expect(vm.allItems().length).toBe(1);
     });
   });
